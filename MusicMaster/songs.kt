@@ -10,7 +10,12 @@ fun main(){
     songs.add("Song 8")
     songs.add("Song 9")
     songs.add("Song 10")
+    addSong(songs, "Song 11")
+    removeSong(songs, "Song 5")
+    songs.shuffle()
+
     playAll(songs)
+
 
 }
 fun playAll(songs: MutableList<String>){
@@ -23,15 +28,13 @@ fun addSong(songs: MutableList<String>, songName: String){
     songs.add(songName)
 }
 fun removeSong(songs: MutableList<String>, songName: String) {
-    for (i in 0..songs.size - 1) {
-        if (songs[i] == songName) {
-            println("Can't remove song: $songName because not found")
-        } else {
-            songs.remove(songName)
-            println("$songName Removed..")
-        }
+    if (songs.remove(songName)) {
+        println("Removed: $songName")
+    } else {
+        println("Song not found: $songName")
     }
 }
+
 fun shuffleSongs(songs: MutableList<String>){
     songs.shuffle()
 }
